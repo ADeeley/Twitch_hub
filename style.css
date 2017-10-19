@@ -1,0 +1,50 @@
+body {
+    background-color: black;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+li {
+    height: 60px;
+    text-align: left;
+    max-width: 500px;
+    padding: 20px 0 20px 20px;
+    margin: auto auto 2px auto; 
+    list-style-type: none;
+    background-color: yellow;
+    font-size: 20px;
+}
+
+a {
+    padding: 0 0 0 70px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+button {
+    height: 50px;
+    width: 60px;
+}
+
+.logo {
+    background-color: grey;
+    height: 50px;
+    width: 50px;
+    margin: 0 0 0 0;
+    float:left;
+    display:inline;
+}
+
+.userLink {
+    float: left;
+    display: inline;
+}
+
+#activity_button {
+    margin: 0 0 0 30px;
+}
+
