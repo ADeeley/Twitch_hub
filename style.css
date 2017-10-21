@@ -42,7 +42,8 @@ button {
 .userLink {
     float: left;
     display: inline;
-}
+    margin: 0 0 0 50px;
+
 
 #activity_button {
     margin: 0 0 0 30px;
