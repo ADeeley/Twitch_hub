@@ -1,7 +1,7 @@
 $(document).ready( function() {
     var URL = "https://wind-bow.gomix.me/twitch-api";
     var twitchURL = "https://go.twitch.tv";
-    var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+    var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "habathcx", "RobotCaleb", "noobs2ninjas"];
         
     var cellArr = [];
     // Populate the table of channels in the HTML 

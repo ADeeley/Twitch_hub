@@ -8,6 +8,10 @@ h1 {
     font-family: 'Raleway';
 }
 
+h3 {
+    color: white;
+}
+
 table, th, td {
     border-bottom: 1px solid #ddd;
 }
@@ -40,6 +44,9 @@ td {
 }
 
 a {
+    display: inline-block;
+    width: 120px;
+    text-align: center;
     background-color: #816dff;
     text-decoration: none;
     padding: 10px;
