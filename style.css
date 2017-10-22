@@ -1,15 +1,62 @@
+body {
+    background-color: #1b1d21;
+    font-family: 'Raleway';
+}
 h1 {
-    text-align: center;
+    margin: 30px auto 20px 20px;
+    color: white;
+    font-family: 'Raleway';
 }
 
 table, th, td {
-    border: 1px solid black;
+    border-bottom: 1px solid #ddd;
 }
 
+table {
+    margin: 0 10% 0 10%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #4434aa;
+    padding: 10px;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+    background-color: #B8C3DB;
+}
+
+tr:hover {
+   background-color: #aaaaaa; 
+}
+
+td {
+    height: 50px;
+    padding: 10px;
+}
+
+a {
+    background-color: #816dff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5%;
+    color: white;
+}
+
+a:hover {
+    background-color: red;
+}
 
 .logo {
     height: 50px;
     width: 50px;
 }
 
-
+#loadText {
+    text-align: center;
+}

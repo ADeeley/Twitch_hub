@@ -45,6 +45,7 @@ $(document).ready( function() {
                         cell = row.insertCell(index);
                         cell.appendChild(item);
                     });
+                    var h = document.getElementsByTagName("h3")[0].style = "color: white";
                 });
             });
         });
