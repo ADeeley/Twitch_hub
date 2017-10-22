@@ -36,7 +36,6 @@ tr:hover {
 }
 
 td {
-    height: 50px;
     padding: 10px;
 }
 
@@ -52,9 +51,23 @@ a:hover {
     background-color: red;
 }
 
+button {
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5%;
+    color: white; 
+    background-color: #3d495b;
+}
+
 .logo {
     height: 50px;
     width: 50px;
+}
+
+.sorting {
+    margin: 0 0 10px 90px;
 }
 
 #loadText {

@@ -1,4 +1,3 @@
-
 $(document).ready( function() {
     var URL = "https://wind-bow.gomix.me/twitch-api";
     var twitchURL = "https://go.twitch.tv";
@@ -51,10 +50,51 @@ $(document).ready( function() {
         });
     }
 });
+function showAll() {
+    /**
+     * Shows all users
+     */
+    var isOnline;
+    var rows = document.getElementById("channels").rows;
+    for (var i = 1; i < rows.length; i++) {
+            rows[i].style.display = '';
+
+    }
+}
+
+function showOnline() {
+    /**
+     * Hides non-online users
+     */
+    showAll();
+    var isOnline;
+    var rows = document.getElementById("channels").rows;
+    for (var i = 1; i < rows.length; i++) {
+        isOnline = rows[i].cells[3].getElementsByTagName('p')[0].innerHTML;
+        if (isOnline == "Offline") {
+            rows[i].style.display = 'none';
+
+        }
+    }
+}
 
 
+function showOffline() {
+    /**
+     * Hides online users
+     */
+    showAll();
+    console.log("Clicked  show Offline");
+    var isOnline;
+    var rows = document.getElementById("channels").rows;
+    for (var i = 1; i < rows.length; i++) {
+        isOnline = rows[i].cells[3].getElementsByTagName('p')[0].innerHTML;
+        if (isOnline == "Online Now") {
+            rows[i].style.display = 'none';
 
-
+        }
+    }
+}
 
 
 
