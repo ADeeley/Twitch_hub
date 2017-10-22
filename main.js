@@ -4,6 +4,7 @@ $(document).ready( function() {
     var twitchURL = "https://go.twitch.tv";
     var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
         
+    var cellArr = [];
     // Populate the table of channels in the HTML 
     for (var user = 0; user < users.length; user++) {
         let u = users[user];
@@ -11,48 +12,46 @@ $(document).ready( function() {
         $.getJSON(URL + '/users/' + u + '?callback=?', function(userData) {
             $.getJSON(URL + '/channels/' + u + '?callback=?', function(channelData) {
                 $.getJSON(URL + '/streams/' + u + '?callback=?', function(streamData) {
-                    console.log(arguments);
                     // Get logo from logoURL
-                    var logo = document.createElement("img");
+                    logo = document.createElement("img");
                     logo.src       = userData['logo'];
                     logo.classList = "logo";
 
                     // Create username
-                    var userName = document.createElement("a")
-                    userName.innerHTML = userData['name'];
+                    let name = userData['name'];
+                    userName = document.createElement("a")
+                    userName.innerHTML = name;
                     userName.classList = "userLink";
-                    userName.href      = twitchURL + '/' + userData['name'];
+                    userName.href      = twitchURL + '/' + name;
 
                     // Get status tagline
-                    var userStatus = document.createElement("p");
+                    userStatus = document.createElement("p");
                     userStatus.innerHTML = channelData['status'];
                     
                     //Get online status
-                    var onlineStatus = document.createElement("p");
+                    isOnline = document.createElement("p");
                     if (!streamData['stream']) {
-                        onlineStatus.innerHTML = "Offline";
+                        isOnline.innerHTML = "Offline";
                     }
                     else {
-                        onlineStatus.innerHTML = "Online Now";
+                        isOnline.innerHTML = "Online Now";
                     }
                     // Define a new row
-                    var row = document.getElementById("channels").insertRow();
+                    let row = document.getElementById("channels").insertRow();
                     // Add cells to the row
-                    var cell = row.insertCell(0);
-                    cell.appendChild(logo);
-                    var cell = row.insertCell(1);
-                    cell.appendChild(userName);
-                    var cell = row.insertCell(2);
-                    cell.appendChild(userStatus);
-                    var cell = row.insertCell(3);
-                    cell.appendChild(onlineStatus);
+                    cellArr = [logo, userName, userStatus, isOnline];
 
-
+                    cellArr.forEach(function(item, index) {
+                        cell = row.insertCell(index);
+                        cell.appendChild(item);
+                    });
                 });
             });
         });
     }
 });
+
+
 
 
 
