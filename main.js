@@ -1,50 +1,53 @@
-var URL = "https://wind-bow.gomix.me/twitch-api";
-var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
 
 $(document).ready( function() {
+    var URL = "https://wind-bow.gomix.me/twitch-api";
     var twitchURL = "https://go.twitch.tv";
-    // Populate the list of users in the HTML 
-    for (var user = 0; user < users.length; user++) {
+    var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
         
-        // Get the JSONP and harvest the details for each user-block
-        $.getJSON(URL + '/users/' + users[user] + '?callback=?', function(data) {
-            var userListEl = document.createElement("li");
-            
-            // Get logo from logoURL
-            var logo = document.createElement("img");
-            logo.src       = data['logo'];
-            logo.style     = "height:50px; width:50px";
-            logo.classList = "logo";
+    // Populate the table of channels in the HTML 
+    for (var user = 0; user < users.length; user++) {
+        let u = users[user];
+        // Get the JSONP and harvest the details for each channel 
+        $.getJSON(URL + '/users/' + u + '?callback=?', function(userData) {
+            $.getJSON(URL + '/channels/' + u + '?callback=?', function(channelData) {
+                $.getJSON(URL + '/streams/' + u + '?callback=?', function(streamData) {
+                    console.log(arguments);
+                    // Get logo from logoURL
+                    var logo = document.createElement("img");
+                    logo.src       = userData['logo'];
+                    logo.classList = "logo";
 
-            // Create username
-            var userName = document.createElement("a")
-            userName.innerHTML = data['name'];
-            userName.classList = "userLink";
-            userName.href      = twitchURL + '/' + data['name'];
+                    // Create username
+                    var userName = document.createElement("a")
+                    userName.innerHTML = userData['name'];
+                    userName.classList = "userLink";
+                    userName.href      = twitchURL + '/' + userData['name'];
 
-            // Get status tagline
-            $.getJSON(URL + '/channels/' + data['name'] + '?callback=?', function(channelData) {
-
-                var status = document.createElement("p");
-                status.style = "font-size: 16px; margin: 0 0 0 50%;";
-                status.innerHTML = channelData['status'];
-                
-                //Get online status
-                $.getJSON(URL + '/streams/' + data['name'] + '?callback=?', function(streamData) {
-                var onlineStatus = document.createElement("p");
+                    // Get status tagline
+                    var userStatus = document.createElement("p");
+                    userStatus.innerHTML = channelData['status'];
+                    
+                    //Get online status
+                    var onlineStatus = document.createElement("p");
                     if (!streamData['stream']) {
                         onlineStatus.innerHTML = "Offline";
                     }
                     else {
                         onlineStatus.innerHTML = "Online Now";
                     }
-                    // Add everything to the list element
-                    userListEl.appendChild(logo);
-                    userListEl.appendChild(userName);
-                    userListEl.appendChild(status);
-                    userListEl.appendChild(onlineStatus);
+                    // Define a new row
+                    var row = document.getElementById("channels").insertRow();
+                    // Add cells to the row
+                    var cell = row.insertCell(0);
+                    cell.appendChild(logo);
+                    var cell = row.insertCell(1);
+                    cell.appendChild(userName);
+                    var cell = row.insertCell(2);
+                    cell.appendChild(userStatus);
+                    var cell = row.insertCell(3);
+                    cell.appendChild(onlineStatus);
 
-                    document.getElementsByTagName("ul")[0].appendChild(userListEl);
+
                 });
             });
         });
