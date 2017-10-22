@@ -13,7 +13,7 @@ table, th, td {
 }
 
 table {
-    margin: 0 10% 0 10%;
+    margin: 0 10% 60px 10%;
     border-collapse: collapse;
 }
 
@@ -61,15 +61,25 @@ button {
     background-color: #3d495b;
 }
 
+button:hover {
+    background-color: red;
+}
+
+footer {
+    color: white;
+}
+
 .logo {
     height: 50px;
     width: 50px;
 }
 
 .sorting {
-    margin: 0 0 10px 90px;
+    margin: 0 0 10px 10%;
 }
 
 #loadText {
     text-align: center;
 }
+
+

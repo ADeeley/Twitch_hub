@@ -8,12 +8,12 @@ $(document).ready( function() {
     for (var user = 0; user < users.length; user++) {
         let u = users[user];
         // Get the JSONP and harvest the details for each channel 
-        $.getJSON(URL + '/users/' + u + '?callback=?', function(userData) {
-            $.getJSON(URL + '/channels/' + u + '?callback=?', function(channelData) {
-                $.getJSON(URL + '/streams/' + u + '?callback=?', function(streamData) {
+        $.getJSON(URL + "/users/" + u + "?callback=?", function(userData) {
+            $.getJSON(URL + "/channels/" + u + "?callback=?", function(channelData) {
+                $.getJSON(URL + "/streams/" + u + "?callback=?", function(streamData) {
                     // Get logo from logoURL
                     logo = document.createElement("img");
-                    logo.src       = userData['logo'];
+                    logo.src       = userData["logo"];
                     logo.classList = "logo";
 
                     // Create username
@@ -21,11 +21,11 @@ $(document).ready( function() {
                     userName = document.createElement("a")
                     userName.innerHTML = name;
                     userName.classList = "userLink";
-                    userName.href      = twitchURL + '/' + name;
+                    userName.href      = twitchURL + "/" + name;
 
                     // Get status tagline
                     userStatus = document.createElement("p");
-                    userStatus.innerHTML = channelData['status'];
+                    userStatus.innerHTML = channelData["status"];
                     
                     //Get online status
                     isOnline = document.createElement("p");
@@ -45,6 +45,8 @@ $(document).ready( function() {
                         cell.appendChild(item);
                     });
                     var h = document.getElementsByTagName("h3")[0].style = "color: white";
+                    // Remove the loading placeholder when channels are displayed
+                    document.getElementById("loadText").style.display = "none";
                 });
             });
         });
@@ -57,7 +59,7 @@ function showAll() {
     var isOnline;
     var rows = document.getElementById("channels").rows;
     for (var i = 1; i < rows.length; i++) {
-            rows[i].style.display = '';
+            rows[i].style.display = "";
 
     }
 }
@@ -70,14 +72,13 @@ function showOnline() {
     var isOnline;
     var rows = document.getElementById("channels").rows;
     for (var i = 1; i < rows.length; i++) {
-        isOnline = rows[i].cells[3].getElementsByTagName('p')[0].innerHTML;
+        isOnline = rows[i].cells[3].getElementsByTagName("p")[0].innerHTML;
         if (isOnline == "Offline") {
-            rows[i].style.display = 'none';
+            rows[i].style.display = "none";
 
         }
     }
 }
-
 
 function showOffline() {
     /**
@@ -88,9 +89,9 @@ function showOffline() {
     var isOnline;
     var rows = document.getElementById("channels").rows;
     for (var i = 1; i < rows.length; i++) {
-        isOnline = rows[i].cells[3].getElementsByTagName('p')[0].innerHTML;
+        isOnline = rows[i].cells[3].getElementsByTagName("p")[0].innerHTML;
         if (isOnline == "Online Now") {
-            rows[i].style.display = 'none';
+            rows[i].style.display = "none";
 
         }
     }
