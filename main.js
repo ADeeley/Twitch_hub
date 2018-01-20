@@ -16,48 +16,21 @@ function populateTable() {
                     let name = userData['name'],
                         h = document.getElementsByTagName("h3")[0].style = "color: white",
                         logo = $('<img>').attr('src', userData['logo']),
-                        cell = $('<td>'),
+                        userName = $('<a>')
+                            .html(name)
+                            .addClass('userLink')
+                            .attr('href', twitchURL + '/' + name),
+                        userStatus = $('<p>').html(channelData['status']),
+                        isOnline = $('<p>').html(getStatus(streamData))
                         row = $('<tr>');
 
-
-                        row.append(cell.append(logo))
+                        row.append($('<td>').append(logo))
+                        row.append($('<td>').append(userName))
+                        row.append($('<td>').append(userStatus))
+                        row.append($('<td>').append(isOnline))
                     
                     $('#channels tbody').append(row);
-                    // Get logo from logoURL
-                    /*
-                    logo = document.createElement("img");
-                    logo.src       = userData["logo"];
-                    logo.classList = "logo";
-
-
-                    // Create username
-                    userName = document.createElement("a")
-                    userName.innerHTML = name;
-                    userName.classList = "userLink";
-                    userName.href      = twitchURL + "/" + name;
-
-                    // Get status tagline
-                    userStatus = document.createElement("p");
-                    userStatus.innerHTML = channelData["status"];
-                    
-                    //Get online status
-                    isOnline = document.createElement("p");
-                    if (!streamData['stream']) {
-                        isOnline.innerHTML = "Offline";
-                    }
-                    else {
-                        isOnline.innerHTML = "Online Now";
-                    }
-                    // Add cells to the row
-                    cellArr = [logo, userName, userStatus, isOnline];
-
-                    cellArr.forEach(function(item, index) {
-                        cell = row.insertCell(index);
-                        cell.appendChild(item);
-                    });
-                    // Remove the loading placeholder when channels are displayed
                     document.getElementById("loadText").style.display = "none";
-                    */
                 });
             });
         });
@@ -111,4 +84,11 @@ function showOffline() {
     }
 }
 
+function getStatus(streamData) {
+    if (!streamData['stream']) {
+        return "Offline";
+    } else {
+        return "Online Now";
+    }
+}
 populateTable();
