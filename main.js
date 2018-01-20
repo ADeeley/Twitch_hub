@@ -12,13 +12,23 @@ function populateTable() {
         $.getJSON(URL + "/users/" + u + "?callback=?", function(userData) {
             $.getJSON(URL + "/channels/" + u + "?callback=?", function(channelData) {
                 $.getJSON(URL + "/streams/" + u + "?callback=?", function(streamData) {
-                    let row = document.getElementById("channels").insertRow(),
-                        name = userData['name'],
-                        h = document.getElementsByTagName("h3")[0].style = "color: white";
+                    //let row = document.getElementById("channels").insertRow(),
+                    let name = userData['name'],
+                        h = document.getElementsByTagName("h3")[0].style = "color: white",
+                        logo = $('<img>').attr('src', userData['logo']),
+                        cell = $('<td>'),
+                        row = $('<tr>');
+
+
+                        row.append(cell.append(logo))
+                    
+                    $('#channels tbody').append(row);
                     // Get logo from logoURL
+                    /*
                     logo = document.createElement("img");
                     logo.src       = userData["logo"];
                     logo.classList = "logo";
+
 
                     // Create username
                     userName = document.createElement("a")
@@ -47,6 +57,7 @@ function populateTable() {
                     });
                     // Remove the loading placeholder when channels are displayed
                     document.getElementById("loadText").style.display = "none";
+                    */
                 });
             });
         });
@@ -62,7 +73,6 @@ function showAll() {
         i = 1;
     for (i; i < rows.length; i++) {
             rows[i].style.display = "";
-
     }
 }
 
@@ -73,6 +83,7 @@ function showOnline() {
     showAll();
     let isOnline = undefined,
         rows = document.getElementById("channels").rows;
+
     for (i; i < rows.length; i++) {
         isOnline = rows[i].cells[3].getElementsByTagName("p")[0].innerHTML;
         if (isOnline == "Offline") {
