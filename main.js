@@ -39,50 +39,38 @@ function populateTable() {
 }
 
 function showAll() {
-    /**
-     * Shows all users
-     */
-    let isOnline = undefined,
-        rows = document.getElementById("channels").rows,
-        i = 1;
-    for (i; i < rows.length; i++) {
-            rows[i].style.display = "";
-    }
+    $('#channels > tbody > tr').each(function() {
+        console.log($(this))
+        $(this).show();
+    })
 }
 
 function showOnline() {
-    /**
-     * Hides non-online users
-     */
-    showAll();
     let isOnline = undefined,
-        rows = document.getElementById("channels").rows;
+        i = 1,
 
-    for (i; i < rows.length; i++) {
-        isOnline = rows[i].cells[3].getElementsByTagName("p")[0].innerHTML;
-        if (isOnline == "Offline") {
-            rows[i].style.display = "none";
-
+    rows = $("#channels > tbody > tr").each(function() {
+        isOnline = $(this).find('td:nth-child(4)').find('p').html()
+        if (isOnline == 'Offline') {
+            $(this).hide();
+        } else {
+            $(this).show();
         }
-    }
+    })
 }
 
 function showOffline() {
-    /**
-     * Hides online users
-     */
-    showAll();
-    let isOnline,
-        rows = document.getElementById("channels").rows,
-        i = 1;
+    let isOnline = undefined,
+        i = 1,
 
-    for (i; i < rows.length; i++) {
-        isOnline = rows[i].cells[3].getElementsByTagName("p")[0].innerHTML;
-        if (isOnline == "Online Now") {
-            rows[i].style.display = "none";
-
+    rows = $("#channels > tbody > tr").each(function() {
+        isOnline = $(this).find('td:nth-child(4)').find('p').html()
+        if (isOnline == 'Online Now') {
+            $(this).hide();
+        } else {
+            $(this).show();
         }
-    }
+    })
 }
 
 function getStatus(streamData) {
