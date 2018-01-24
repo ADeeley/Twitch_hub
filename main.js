@@ -45,32 +45,26 @@ function showAll() {
     })
 }
 
-function showOnline() {
+function showChannelsWithStatus(status) {
     let isOnline = undefined,
-        i = 1,
+    i = 1,
 
     rows = $("#channels > tbody > tr").each(function() {
         isOnline = $(this).find('td:nth-child(4)').find('p').html()
-        if (isOnline == 'Offline') {
-            $(this).hide();
-        } else {
+        if (isOnline == status) {
             $(this).show();
+        } else {
+            $(this).hide();
         }
     })
 }
 
-function showOffline() {
-    let isOnline = undefined,
-        i = 1,
+function showOnline() {
+    showChannelsWithStatus('Online Now');
+}
 
-    rows = $("#channels > tbody > tr").each(function() {
-        isOnline = $(this).find('td:nth-child(4)').find('p').html()
-        if (isOnline == 'Online Now') {
-            $(this).hide();
-        } else {
-            $(this).show();
-        }
-    })
+function showOffline() {
+    showChannelsWithStatus('Offline');
 }
 
 function getStatus(streamData) {
