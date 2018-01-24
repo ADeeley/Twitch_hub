@@ -2,13 +2,31 @@ body {
     background-color: #1b1d21;
     font-family: 'Raleway';
 }
-h1 {
-    margin: 30px auto 20px 20px;
-    color: white;
-    font-family: 'Raleway';
+
+
+.header {
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0 0 50px 0;
 }
 
-h3 {
+.logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+h1 {
+    color: white;
+    margin: auto 0 auto 10px;
+    font-family: 'Raleway';
+
+}
+
+h2 {
     color: white;
 }
 
@@ -56,7 +74,7 @@ a {
     background-color: #816dff;
     text-decoration: none;
     padding: 10px;
-    border-radius: 5%;
+    border-radius: 3px;
     color: white;
 }
 
@@ -69,7 +87,7 @@ button {
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    border-radius: 5%;
+    border-radius: 3px;
     color: white; 
     background-color: #3d495b;
 }
@@ -82,10 +100,6 @@ footer {
     color: white;
 }
 
-.logo {
-    height: 50px;
-    width: 50px;
-}
 
 .sorting {
     margin: 0 0 10px 10%;
