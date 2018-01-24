@@ -1,32 +1,36 @@
-<html>
+<!DOCTYPE html> <!--HTML5-->
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Web app designed to keep track of your favourite Twitch streamers.">
+        <meta name="author" content="Adam M Deeley">
+        <meta name="keywords" content="Twitch Manager Hub Streamers Channels">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 viewport-fit=cover">
+
         <title>Twitch Hub</title>
-        <link rel="stylesheet" 
-              type="text/css" 
-              href="style.css">
-        </link>
-        <link rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Raleway">
-        </link>
-        <h1>Twitch Hub</h1>
-        <div class="sorting">
-            <button onclick="showAll()">All</button>
-            <button onclick="showOnline()">Online Now</button>
-            <button onclick="showOffline()">Offline</button>
-        </div>
-    </head>
-    <body>
-        <table id="channels">
-            <tr>
-                <th>Icon</th>
-                <th>Username</th>
-                <th>What's on</th>
-                <th>Status</th>
-            </tr>
-        </table>
-        <h3 id="loadText">Loading...</h3>
-        <footer>By Adam M Deeley (ad.deeley@gmail.com)</footer>
+        <link rel="stylesheet" type="text/css" href="css/style.css"></link>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"></link>
         <script src="jquery-3.2.1.min.js"></script>
+    </head>
+    <body>        
+        <h1>Twitch Hub</h1>
+        <main>
+            <div class="sorting">
+                <button onclick="showAll()">All</button>
+                <button onclick="showOnline()">Online Now</button>
+                <button onclick="showOffline()">Offline</button>
+            </div>
+            <table id="channels">
+                <tr>
+                    <th>Icon</th>
+                    <th>Username</th>
+                    <th>What's on</th>
+                    <th>Status</th>
+                </tr>
+            </table>
+            <h3 id="loadText">Loading...</h3>
+        </main>
+        <footer>By Adam M Deeley - This website has no affiliation with Twitch.</footer>
         <script src="main.js"></script>
     </body>
 </html>
