@@ -31,7 +31,8 @@ function populateTable() {
                         row.append($('<td>').append(isOnline))
                     
                     $('#channels tbody').append(row);
-                    document.getElementById("loadText").style.display = "none";
+                    //document.getElementById("loadText").style.display = "none";
+                    $('#loadText').hide();
                 });
             });
         });
@@ -68,10 +69,7 @@ function showOffline() {
 }
 
 function getStatus(streamData) {
-    if (!streamData['stream']) {
-        return "Offline";
-    } else {
-        return "Online Now";
-    }
+
+    return streamData['stream'] ? 'Online Now' : 'Offline';
 }
 populateTable();
