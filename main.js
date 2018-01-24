@@ -21,17 +21,16 @@ function populateTable() {
                             .html(name)
                             .addClass('userLink')
                             .attr('href', twitchURL + '/' + name),
-                        userStatus = $('<p>').html(channelData['status']),
-                        isOnline = $('<p>').html(getStatus(streamData))
+                        userStatus = $('<td>').html(channelData['status']),
+                        isOnline = $('<td>').html(getStatus(streamData))
                         row = $('<tr>');
 
                         row.append($('<td>').append(logo))
                         row.append($('<td>').append(userName))
-                        row.append($('<td>').append(userStatus))
-                        row.append($('<td>').append(isOnline))
+                        row.append((userStatus))
+                        row.append(isOnline)
                     
                     $('#channels tbody').append(row);
-                    //document.getElementById("loadText").style.display = "none";
                     $('#loadText').hide();
                 });
             });
@@ -51,7 +50,7 @@ function showChannelsWithStatus(status) {
     i = 1,
 
     rows = $("#channels > tbody > tr").each(function() {
-        isOnline = $(this).find('td:nth-child(4)').find('p').html()
+        isOnline = $(this).find('td:nth-child(4)').html()
         if (isOnline == status) {
             $(this).show();
         } else {
