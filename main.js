@@ -14,7 +14,7 @@ function populateTable() {
                 $.getJSON(URL + "/streams/" + u + "?callback=?", function(streamData) {
                     //let row = document.getElementById("channels").insertRow(),
                     let name = userData['name'],
-                        h = document.getElementsByTagName("h3")[0].style = "color: white",
+
                         logo = $('<img>').attr('src', userData['logo'])
                             .addClass('logo'),
                         userName = $('<a>')
