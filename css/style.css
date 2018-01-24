@@ -12,13 +12,19 @@ h3 {
     color: white;
 }
 
+.container {
+    padding: 1px; 
+    border: 1px solid white;
+    margin: auto 10% 10% 10%;
+}
+
 table, th, td {
     border-bottom: 1px solid #ddd;
 }
 
 table {
-    margin: 0 10% 60px 10%;
     border-collapse: collapse;
+    width: 100%;
 }
 
 th {

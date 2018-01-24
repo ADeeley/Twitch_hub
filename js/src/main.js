@@ -2,19 +2,15 @@ const URL = "https://wind-bow.gomix.me/twitch-api";
 const twitchURL = "https://go.twitch.tv";
 const users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "habathcx", "RobotCaleb", "noobs2ninjas"];
 
-// Populate the table of channels in the HTML 
 function populateTable() {
     let cellArr = [];
 
     for (var user = 0; user < users.length; user++) {
         let u = users[user];
-        // Get the JSONP and harvest the details for each channel 
         $.getJSON(URL + "/users/" + u + "?callback=?", function(userData) {
             $.getJSON(URL + "/channels/" + u + "?callback=?", function(channelData) {
                 $.getJSON(URL + "/streams/" + u + "?callback=?", function(streamData) {
-                    //let row = document.getElementById("channels").insertRow(),
                     let name = userData['name'],
-
                         logo = $('<img>').attr('src', userData['logo'])
                             .addClass('logo'),
                         userName = $('<a>')
@@ -38,13 +34,6 @@ function populateTable() {
     }
 }
 
-function showAll() {
-    $('#channels > tbody > tr').each(function() {
-        console.log($(this))
-        $(this).show();
-    })
-}
-
 function showChannelsWithStatus(status) {
     let isOnline = undefined,
     i = 1,
@@ -56,6 +45,12 @@ function showChannelsWithStatus(status) {
         } else {
             $(this).hide();
         }
+    })
+}
+
+function showAll() {
+    $('#channels > tbody > tr').each(function() {
+        $(this).show();
     })
 }
 
